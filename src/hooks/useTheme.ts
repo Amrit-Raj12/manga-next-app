@@ -9,7 +9,6 @@ export const useTheme = () => {
       setTheme(storedTheme as 'light' | 'dark');
       document.documentElement.classList.add(storedTheme);
     } else {
-      // Detect the user's system theme preference
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       setTheme(prefersDark ? 'dark' : 'light');
       document.documentElement.classList.add(prefersDark ? 'dark' : 'light');
