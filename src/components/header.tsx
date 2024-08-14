@@ -9,30 +9,30 @@ import Image from 'next/image';
 const Header: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
   const [show, setShow] = useState<Boolean | null>(null);
-  
+
 
   return (
-    <header className={`bg-secondary dark:bg-darkBg`}>
-      <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
+    <header className={`bg-secondary dark:bg-darkBg hidden md:flex`}>
+      <div className="mx-auto flex h-16 w-full md:max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
         <a className="p-4 md:flex hidden items-center flex-col text-primary dark:text-primary" href="#">
-          
-          <Image 
-          src="/manga-nest.png" 
-          alt="Logo" 
-          width={50} 
-          height={50} 
-          className="mr-4"
+
+          <Image
+            src="/manga-nest.png"
+            alt="Logo"
+            width={50}
+            height={50}
+            className="mr-4"
           />
           <span className='hidden xl:flex'>Manga Nest</span>
         </a>
         <a className="p-4 md:hidden flex items-center flex-col text-primary dark:text-primary" href="#">
-          
-          <Image 
-          src="/manga-nest.png" 
-          alt="Logo" 
-          width={50} 
-          height={50} 
-          className="mr-4 hidden"
+
+          <Image
+            src="/manga-nest.png"
+            alt="Logo"
+            width={50}
+            height={50}
+            className="mr-4 hidden"
           />
           <span className='xl:flex'>Manga Nest</span>
         </a>
@@ -57,8 +57,8 @@ const Header: React.FC = () => {
                 <span className="sr-only">Search</span>
 
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-4 w-4">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-</svg>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
 
               </button>
             </span>
@@ -118,22 +118,22 @@ const Header: React.FC = () => {
                 </div>
 
                 <div className="flex items-center">
-        <label
-          htmlFor="theme-toggle"
-          className="relative inline-block h-8 w-14 cursor-pointer rounded-full bg-gray-300 dark:bg-[#D69738] transition"
-        >
-          <input
-            type="checkbox"
-            id="theme-toggle"
-            className="peer sr-only"
-            checked={theme === 'dark'}
-            onChange={() => toggleTheme()}
-          />
-          <span
-            className="absolute inset-y-0 start-0 m-1 w-6 rounded-full bg-[#322514] transition-transform peer-checked:translate-x-6 dark:bg-[#322514]"
-          ></span>
-        </label>
-      </div>
+                  <label
+                    htmlFor="theme-toggle"
+                    className="relative inline-block h-8 w-14 cursor-pointer rounded-full bg-gray-300 dark:bg-[#D69738] transition"
+                  >
+                    <input
+                      type="checkbox"
+                      id="theme-toggle"
+                      className="peer sr-only"
+                      checked={theme === 'dark'}
+                      onChange={() => toggleTheme()}
+                    />
+                    <span
+                      className="absolute inset-y-0 start-0 m-1 w-6 rounded-full bg-[#322514] transition-transform peer-checked:translate-x-6 dark:bg-[#322514]"
+                    ></span>
+                  </label>
+                </div>
 
 
               </div>
@@ -158,8 +158,8 @@ const Header: React.FC = () => {
             >
               <span className="sr-only">Toggle menu</span>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-</svg>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
 
             </button>
           </div>
@@ -167,9 +167,9 @@ const Header: React.FC = () => {
       </div>
 
 
-              {/* Mobile Header */}
-              <MobileHeader show={show} setShow={setShow} />
-      
+      {/* Mobile Header */}
+      <MobileHeader show={show} setShow={setShow} />
+
     </header>
   );
 };
