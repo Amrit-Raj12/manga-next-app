@@ -12,8 +12,8 @@ const Header: React.FC = () => {
 
 
   return (
-    <header className={`bg-secondary dark:bg-darkBg hidden md:flex`}>
-      <div className="mx-auto flex h-16 w-full md:max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
+    <header className={`bg-secondary dark:bg-darkBg flex`}>
+      <div className="mx-auto hidden md:flex h-16 w-full md:max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
         <a className="p-4 md:flex hidden items-center flex-col text-primary dark:text-primary" href="#">
 
           <Image
