@@ -17,7 +17,7 @@ const MobileHeader: React.FC<PropsType> = ({ show, setShow }) => {
 
     return (
         <nav className="mb-8">
-            <div className={`"py-4 px-6 w-full flex justify-between items-center bg-white dark:bg-darkBg fixed top-0 z-40"`}>
+            <div className={`"py-4 px-6 w-full flex justify-between items-center bg-white dark:bg-darkBg fixed top-0 z-50"`}>
                 <div className="w-24 my-2">
                     {/* <svg xmlns="http://www.w3.org/2000/svg" width={43} height={44} viewBox="0 0 43 44" fill="none">
                         <path

@@ -1,7 +1,7 @@
 import React from 'react'
-import CarauselComponent from './carausel'
-import ListComponent from './listComponent'
-import Banner from './banner'
+import Banner from './Banner'
+import CarauselComponent from './Carausel'
+import ListComponent from './ListComponent'
 
 const Hero: React.FC = () => {
 

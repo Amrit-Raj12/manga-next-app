@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import { useTheme } from '../hooks/useTheme';
 import { darkBg, darkText } from '@/utils/color';
-import MobileHeader from './mobileHeader';
 import Image from 'next/image';
+import { HeaderProps } from '@/types/types';
+import MobileHeader from './MobileHeader';
 
 
 
-const Header: React.FC = () => {
+const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
   const { theme, toggleTheme } = useTheme();
   const [show, setShow] = useState<Boolean | null>(null);
 
 
   return (
     <header className={`bg-secondary dark:bg-darkBg flex`}>
-      <div className="mx-auto hidden md:flex h-16 w-full md:max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto hidden md:flex h-16 w-full md:max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-0">
         <a className="p-4 md:flex hidden items-center flex-col text-primary dark:text-primary" href="#">
 
           <Image
@@ -25,18 +26,6 @@ const Header: React.FC = () => {
           />
           <span className='hidden xl:flex'>Manga Nest</span>
         </a>
-        <a className="p-4 md:hidden flex items-center flex-col text-primary dark:text-primary" href="#">
-
-          <Image
-            src="/manga-nest.png"
-            alt="Logo"
-            width={50}
-            height={50}
-            className="mr-4 hidden"
-          />
-          <span className='xl:flex'>Manga Nest</span>
-        </a>
-
         <div>
 
           <div className="relative">
@@ -133,6 +122,13 @@ const Header: React.FC = () => {
                       className="absolute inset-y-0 start-0 m-1 w-6 rounded-full bg-[#322514] transition-transform peer-checked:translate-x-6 dark:bg-[#322514]"
                     ></span>
                   </label>
+
+                  <button
+        onClick={toggleSidebar}
+        className="p-2 text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400"
+      >
+        Filters {/* You can replace this text with an icon */}
+      </button>
                 </div>
 
 

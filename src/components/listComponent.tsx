@@ -1,5 +1,8 @@
 import React from 'react'
-import ListCard from './listCard'
+import ListCard from './ListCard'
+
+const List = new Array(10).fill(0)
+
 
 const ListComponent = () => {
     return (
@@ -10,13 +13,9 @@ const ListComponent = () => {
                 Trending
             </h2>
             </div>
-            <div className='bg-white dark:bg-darkInput p-4 w-auto'>
+            <div className='bg-white dark:bg-darkInput p-4 w-auto border-8 border-black rounded-md h-[calc(67vh-200px)] overflow-y-scroll scrollbar-hidden'>
 
-            <ListCard />
-            <ListCard />
-            <ListCard />
-            <ListCard />
-            <ListCard />
+            {List.map((_, index) => (<ListCard key={index} />)) }
             </div>
         </div>
     )

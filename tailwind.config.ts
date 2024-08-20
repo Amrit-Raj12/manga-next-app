@@ -1,4 +1,4 @@
-import { darkBg, darkInputBg, darkText, primary, secondary } from "./src/utils/color";
+import { darkBg, darkInputBg, darkText, lightText, primary, secondary } from "./src/utils/color";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -20,7 +20,8 @@ const config: Config = {
         darkText: darkText,
         darkInput: darkInputBg,
         primary: primary,
-        secondary: secondary
+        secondary: secondary,
+        lightText: lightText
       }
     },
   },

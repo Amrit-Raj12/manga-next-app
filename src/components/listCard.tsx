@@ -3,14 +3,14 @@ import React from 'react'
 const ListCard = () => {
     return (
         <div className='flex flex-row gap-4 items-center'>
-            <div className='mb-2 text-md'>
+            <div className='mb-2 text-md text-lightText dark:text-darkText'>
                 01
             </div>
             <div className='mb-2'>
                 <img src='https://res.cloudinary.com/dcdchgx6z/image/upload/v1723198685/retro-digital-art-illustration-person-using-radio-technology_ni2cng.jpg' alt='manga1' className='w-10 h-16 object-fill' />
             </div>
             <div className='mb-2 text-md'>
-                <p>Chainsaw Man</p>
+                <p className='text-lightText dark:text-darkText'>Chainsaw Man</p>
                 <div className='flex flex-row gap-2 items-center my-1'>
                     <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15.0007 12C15.0007 13.6569 13.6576 15 12.0007 15C10.3439 15 9.00073 13.6569 9.00073 12C9.00073 10.3431 10.3439 9 12.0007 9C13.6576 9 15.0007 10.3431 15.0007 12Z" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12.0012 5C7.52354 5 3.73326 7.94288 2.45898 12C3.73324 16.0571 7.52354 19 12.0012 19C16.4788 19 20.2691 16.0571 21.5434 12C20.2691 7.94291 16.4788 5 12.0012 5Z" stroke="gray" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                     <p className='text-[14px] text-gray-400'>200k+</p>
