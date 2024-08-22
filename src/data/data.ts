@@ -146,3 +146,9 @@ export const imageList = [
         language: "Japanese"
       }
   ];
+
+  export const filterOptions: string[] = [
+    'Latest Release', 'Latest Manga', 'Trending', 'Top Rated', 'Action', 'Adventure', 'Comedy', 'Drama',
+    'Ecchi', 'Fantasy', 'Harem', 'Horror', 'Martial Arts', 'Mature', 'Mecha', 'Mystery', 'Psychological',
+    'Romance', 'Sci-Fi', 'Slice of Life', 'Sports', 'Supernatural', 'Tragedy', 'Yaoi', 'Yuri'
+];

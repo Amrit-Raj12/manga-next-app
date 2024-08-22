@@ -16,7 +16,7 @@ const MobileHeader: React.FC<PropsType> = ({ show, setShow }) => {
 
 
     return (
-        <nav className="mb-8">
+        <nav className="mb-8 z-50">
             <div className={`"py-4 px-6 w-full flex justify-between items-center bg-white dark:bg-darkBg fixed top-0 z-50"`}>
                 <div className="w-24 my-2">
                     {/* <svg xmlns="http://www.w3.org/2000/svg" width={43} height={44} viewBox="0 0 43 44" fill="none">
@@ -31,47 +31,48 @@ const MobileHeader: React.FC<PropsType> = ({ show, setShow }) => {
                 </div>
                 <div>
 
-          <div className="relative -left-10">
-            <label htmlFor="Search" className="sr-only"> Search For... </label>
+                    <div className="relative -left-10">
+                        <label htmlFor="Search" className="sr-only"> Search For... </label>
 
-            <input
-              type="text"
-              id="Search"
-              placeholder="search Manga"
-              className={`w-[180px] rounded-md border-gray-200 p-2.5 pe-10 shadow-sm sm:text-sm dark:border-darkBg dark:bg-darkInput dark:text-white`}
-            />
+                        <input
+                            type="text"
+                            id="Search"
+                            placeholder="search Manga"
+                            className={`w-[180px] rounded-md border-gray-200 p-2.5 pe-10 shadow-sm sm:text-sm dark:border-darkBg dark:bg-darkInput dark:text-white`}
+                        />
 
-            <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
-              <button
-                type="button"
-                className="text-gray-600 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
-              >
-                <span className="sr-only">Search</span>
+                        <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
+                            <button
+                                type="button"
+                                className="text-gray-600 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+                            >
+                                <span className="sr-only">Search</span>
 
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-4 w-4">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-4 w-4">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                </svg>
 
-              </button>
-            </span>
-          </div>
-          <div className="absolute right-0 top-2 flex items-center space-x-4">
-          <button
-              className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden dark:bg-darkBg dark:text-white dark:hover:text-white/75"
-              onClick={() => setShow(!show)}
-            >
-              <span className="sr-only">Toggle menu</span>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
+                            </button>
+                        </span>
+                    </div>
+                    <div className="absolute right-0 top-2 flex items-center space-x-4">
+                        <button
+                            className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden dark:bg-darkBg dark:text-white dark:hover:text-white/75"
+                            onClick={() => setShow(!show)}
+                        >
+                            <span className="sr-only">Toggle menu</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
 
-            </button>
-          </div>
-        </div>
-                
+                        </button>
+                    </div>
+                </div>
+
             </div>
             {/*Mobile responsive sidebar*/}
-            <div className={show ? "w-full xl:hidden h-full absolute z-40  transform  translate-x-0 " : "   w-full xl:hidden h-full absolute z-40  transform -translate-x-full"}>
+            <div className={`w-full xl:hidden h-full fixed top-0 left-0 z-40 transform ${show ? "translate-x-0" : "-translate-x-full"
+                } transition-transform duration-300 ease-in-out`}>
                 <div className={`w-64 z-40 fixed overflow-y-auto top-0 bg-white dark:bg-darkBg shadow h-full flex-col justify-between xl:hidden pb-4 transition duration-150 ease-in-out`}>
                     <div className="px-6 h-full">
                         <div className="flex flex-col justify-between h-full w-full">
@@ -99,12 +100,12 @@ const MobileHeader: React.FC<PropsType> = ({ show, setShow }) => {
                                     </div>
                                 </div> */}
                                 <div id="cross" className="text-gray-800 dark:text-[#D69738] absolute right-0 p-4" onClick={() => setShow(!show)}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-x" width={24} height={24} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" />
-                                                <line x1={18} y1={6} x2={6} y2={18} />
-                                                <line x1={6} y1={6} x2={18} y2={18} />
-                                            </svg>
-                                        </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-x" width={24} height={24} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" />
+                                        <line x1={18} y1={6} x2={6} y2={18} />
+                                        <line x1={6} y1={6} x2={18} y2={18} />
+                                    </svg>
+                                </div>
                                 <ul className="f-m-m">
                                     <a className="cursor-pointer">
                                         <li className="text-gray-800 dark:text-darkText pt-10">
@@ -131,7 +132,7 @@ const MobileHeader: React.FC<PropsType> = ({ show, setShow }) => {
                                                             <path stroke="none" d="M0 0h24v24H0z" />
                                                             <path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1" />
                                                         </svg> */}
-                                                       <svg width="24px" height="24px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" strokeWidth={3} stroke="#ffffff" fill="none"><g id="SVGRepo_bgCarrier" strokeWidth={0} /><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" /><g id="SVGRepo_iconCarrier"><path d="M30,52.16c.81-2.07,7.06-17,19.76-19.86a.09.09,0,0,0,0-.18c-2.14-.86-15.22-6.57-19.38-20.26a.09.09,0,0,0-.18,0c-.51,2.27-3.94,14.43-20,20a.1.1,0,0,0,0,.19c2.24.38,13.48,3.14,19.62,20.15A.1.1,0,0,0,30,52.16Z" /><path d="M48.79,25.08c.29-.74,2.52-6.07,7.06-7.09a0,0,0,0,0,0-.07c-.76-.3-5.43-2.34-6.92-7.23a0,0,0,0,0-.07,0c-.18.82-1.4,5.16-7.14,7.13a0,0,0,0,0,0,.07c.8.14,4.81,1.12,7,7.2A0,0,0,0,0,48.79,25.08Z" /></g></svg>
+                                                        <svg width="24px" height="24px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" strokeWidth={3} stroke="#ffffff" fill="none"><g id="SVGRepo_bgCarrier" strokeWidth={0} /><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" /><g id="SVGRepo_iconCarrier"><path d="M30,52.16c.81-2.07,7.06-17,19.76-19.86a.09.09,0,0,0,0-.18c-2.14-.86-15.22-6.57-19.38-20.26a.09.09,0,0,0-.18,0c-.51,2.27-3.94,14.43-20,20a.1.1,0,0,0,0,.19c2.24.38,13.48,3.14,19.62,20.15A.1.1,0,0,0,30,52.16Z" /><path d="M48.79,25.08c.29-.74,2.52-6.07,7.06-7.09a0,0,0,0,0,0-.07c-.76-.3-5.43-2.34-6.92-7.23a0,0,0,0,0-.07,0c-.18.82-1.4,5.16-7.14,7.13a0,0,0,0,0,0,.07c.8.14,4.81,1.12,7,7.2A0,0,0,0,0,48.79,25.08Z" /></g></svg>
 
                                                     </div>
                                                     <p className="text-gray-800 dark:text-darkText xl:text-base md:text-2xl text-base ml-3">Latest</p>
@@ -148,7 +149,7 @@ const MobileHeader: React.FC<PropsType> = ({ show, setShow }) => {
                                                         <polyline points="8 16 10 10 16 8 14 14 8 16" />
                                                         <circle cx={12} cy={12} r={9} />
                                                     </svg> */}
-                                                   <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" strokeWidth={0} /><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" /><g id="SVGRepo_iconCarrier"> <g id="Interface / Trending_Up"> <path id="Vector" d="M20.0005 7L14.1543 12.9375C14.0493 13.0441 13.9962 13.0976 13.9492 13.1396C13.1899 13.8193 12.0416 13.8193 11.2822 13.1396C11.2352 13.0976 11.1817 13.0442 11.0767 12.9375C10.9716 12.8308 10.9191 12.7774 10.8721 12.7354C10.1127 12.0557 8.96397 12.0557 8.20461 12.7354C8.15771 12.7773 8.10532 12.8305 8.00078 12.9367L4 17M20.0005 7L20 13M20.0005 7H14" stroke="#ffffff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" /> </g> </g></svg>
+                                                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" strokeWidth={0} /><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" /><g id="SVGRepo_iconCarrier"> <g id="Interface / Trending_Up"> <path id="Vector" d="M20.0005 7L14.1543 12.9375C14.0493 13.0441 13.9962 13.0976 13.9492 13.1396C13.1899 13.8193 12.0416 13.8193 11.2822 13.1396C11.2352 13.0976 11.1817 13.0442 11.0767 12.9375C10.9716 12.8308 10.9191 12.7774 10.8721 12.7354C10.1127 12.0557 8.96397 12.0557 8.20461 12.7354C8.15771 12.7773 8.10532 12.8305 8.00078 12.9367L4 17M20.0005 7L20 13M20.0005 7H14" stroke="#ffffff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" /> </g> </g></svg>
 
                                                 </div>
                                                 <p className="text-gray-800 dark:text-darkText xl:text-base md:text-2xl text-base ml-3">Popular</p>

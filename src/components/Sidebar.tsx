@@ -1,3 +1,4 @@
+import { filterOptions } from "@/data/data";
 import React from "react";
 
 interface SidebarProps {
@@ -13,24 +14,26 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, closeSidebar }) => {
       } transition-transform duration-300 ease-in-out z-50`}
     >
       <button
-        className="p-4 text-right text-gray-600 dark:text-gray-400"
+        className="p-4 text-right text-gray-600 dark:text-primary"
         onClick={closeSidebar}
       >
         &times; {/* Close Icon */}
       </button>
       <div className="p-4">
-        <h2 className="text-lg font-semibold mb-4">Filters</h2>
-        <div className="mb-4">
-          <h3 className="font-semibold">Category</h3>
+        <h2 className="text-lg font-semibold mb-4 text-primary">Filters</h2>
+        <div className="mb-4 overflow-y-scroll h-3/4">
+          <h3 className="font-semibold mb-2 text-primary">Genre</h3>
           <ul>
-            <li>
-              <input type="checkbox" id="category1" name="category1" />
-              <label htmlFor="category1" className="ml-2">Category 1</label>
+            {filterOptions.map((item, index) => (
+              <li key={index}>
+              <input type="checkbox" id={item} name={item} />
+              <label htmlFor={item} className="ml-2 capitalize text-primary">{item}</label>
             </li>
-            <li>
+            ))}
+            {/* <li>
               <input type="checkbox" id="category2" name="category2" />
               <label htmlFor="category2" className="ml-2">Category 2</label>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
