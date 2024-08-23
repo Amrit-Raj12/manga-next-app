@@ -1,12 +1,22 @@
 import React, { useState } from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import { useRouter } from 'next/router';
 
 const carouselData = new Array(3).fill(0)
 
 const CarauselComponent = () => {
 
     const [isExpanded, setIsExpanded] = useState(false);
+
+    const route = useRouter()
+
+    let mangaTitle = 'One Piece'
+    let mangaId = '5789a6b9aa4a2a5118417664'
+
+    const handlePush = () => {
+        route.push(`/${mangaTitle}/${mangaId}`)
+    }
 
     return (
         <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false} statusFormatter={() => ''}>
@@ -64,7 +74,7 @@ const CarauselComponent = () => {
                         )}
 
                         <div className='flex flex-row gap-2 items-center justify-start mt-2'>
-                            <button className='rounded-lg bg-secondary px-2.5 py-1 text-sm text-primary dark:text-purple-100'>Read Now</button>
+                            <button className='rounded-lg bg-secondary px-2.5 py-1 text-sm text-primary dark:text-purple-100' onClick={handlePush}>Read Now</button>
                             <button className='rounded-lg bg-primary px-2.5 py-1 text-sm text-primary dark:text-purple-100 underline'>More Info</button>
                         </div>
                     </div>

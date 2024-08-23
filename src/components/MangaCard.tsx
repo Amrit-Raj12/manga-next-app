@@ -1,4 +1,5 @@
 import { MangaType } from '@/types/types';
+import Link from 'next/link';
 import React from 'react'
 
 interface MangaCardProps {
@@ -6,9 +7,13 @@ interface MangaCardProps {
 }
 
 const MangaCard: React.FC<MangaCardProps> = ({manga}) => {
+
+     let mangaTitle = 'One Piece'
+    let mangaId = '5789a6b9aa4a2a5118417664'
+
     return (
         <div className='w-64 h-96'>
-            <a href="#" className="group relative block bg-darkBg rounded-lg h-full">
+            <Link href={`/${mangaTitle}/${mangaId}`} className="group relative block bg-darkBg rounded-lg h-full">
                 <img
                     alt=""
                     src={manga.poster}
@@ -30,7 +35,7 @@ const MangaCard: React.FC<MangaCardProps> = ({manga}) => {
                         </div>
                     </div>
                 </div>
-            </a>
+            </Link>
         </div>
     )
 }

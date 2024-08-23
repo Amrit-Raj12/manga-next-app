@@ -1,12 +1,14 @@
 import Image from 'next/image'
 import React from 'react'
+import FooterImg from '@/assets/images/group-anime-removedbg.png'
 
 const Footer = () => {
   return (
-    <footer className="bg-white lg:grid lg:grid-cols-5 dark:bg-darkBg">
+    <footer className=" bg-white lg:grid lg:grid-cols-5 dark:bg-darkBg">
   <div className="relative block h-32 lg:col-span-2 lg:h-full">
-    <img
-      src="./group-anime-removedbg.png"
+    <Image
+      src={FooterImg}
+      width={1000}
       alt=""
       className="absolute inset-0 h-full w-full object-cover"
       style={{
@@ -23,7 +25,7 @@ const Footer = () => {
             className="block text-2xl font-medium text-gray-900 hover:opacity-75 sm:text-3xl dark:text-white"
           >
             <Image
-            src="/manga-nest.png"
+            src={"/manga-nest.png"}
             alt="Logo"
             width={120}
             height={120}

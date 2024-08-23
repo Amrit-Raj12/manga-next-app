@@ -4,6 +4,7 @@ import { darkBg, darkText } from '@/utils/color';
 import Image from 'next/image';
 import { HeaderProps } from '@/types/types';
 import MobileHeader from './MobileHeader';
+import Link from 'next/link';
 
 
 
@@ -15,7 +16,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
   return (
     <header className={`bg-secondary dark:bg-darkBg flex`}>
       <div className="mx-auto hidden md:flex h-16 w-full md:max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-0">
-        <a className="p-4 md:flex hidden items-center flex-col text-primary dark:text-primary" href="#">
+        <Link className="p-4 md:flex hidden items-center flex-col text-primary dark:text-primary" href="/">
 
           <Image
             src="/manga-nest.png"
@@ -25,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
             className="mr-4"
           />
           <span className='hidden xl:flex'>Manga Nest</span>
-        </a>
+        </Link>
         <div>
 
           <div className="relative">
@@ -58,38 +59,38 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
           <nav aria-label="Global" className="hidden md:block">
             <ul className="flex items-center gap-6 text-sm">
               <li>
-                <a
+                <Link
                   className="text-white transition hover:text-primary dark:text-white dark:hover:text-white/75"
-                  href="#"
+                  href="/"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   className="text-white transition hover:text-primary dark:text-white dark:hover:text-white/75"
-                  href="#"
+                  href="/"
                 >
                   Manga List
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a
+                <Link
                   className="text-white transition hover:text-primary dark:text-white dark:hover:text-white/75"
-                  href="#"
+                  href="/"
                 >
                   Latest
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a
+                <Link
                   className="text-white transition hover:text-primary dark:text-white dark:hover:text-white/75"
-                  href="#"
+                  href="/"
                 >
                   Popular
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
@@ -133,19 +134,19 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
 
 
               </div>
-              {/* <a
+              {/* <Link
                 className="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700 dark:hover:bg-teal-500"
-                href="#"
+                href="/"
               >
                 Login
-              </a>
+              </Link>
 
-              <a
+              <Link
                 className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block dark:bg-gray-800 dark:text-white dark:hover:text-white/75"
-                href="#"
+                href="/"
               >
                 Register
-              </a> */}
+              </Link> */}
             </div>
 
             <button

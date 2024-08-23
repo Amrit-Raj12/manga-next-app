@@ -30,7 +30,7 @@ const MultiCarausel: React.FC<MangaProps> = ({mangaData}) => {
       return (
       <Carousel
         swipeable={false}
-        draggable={false}
+        draggable={true}
         showDots={true}
         responsive={responsive}
         ssr={true} 
@@ -41,7 +41,7 @@ const MultiCarausel: React.FC<MangaProps> = ({mangaData}) => {
         containerClass="carousel-container"
         removeArrowOnDeviceType={["tablet", "mobile"]}
         dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-40-px"
+        itemClass="carousel-item-padding-40-px ml-2"
       >
         {mangaData.map((item) => (
           <MangaCard key={item.id} manga={item} />
