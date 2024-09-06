@@ -1,3 +1,14 @@
+
+export interface LatestMangaType  {
+    mangaID: string;
+    img: string;
+    title: string;
+    latestChapter: string;
+    chapterID: string;
+    view: string;
+    description: string;
+  }
+
 export interface MangaType {
     id: number;
     title: string;
@@ -21,3 +32,22 @@ export interface HeaderProps {
       title: string;
       mangaList: MangaType[]
   }
+
+  export interface MangaDetailProps {
+    author: string;
+    chaprterList: any[];
+    imageUrl: string;
+    name: string;
+    status: string;
+    updated: string;
+    view: string;
+    genres: string[];
+  }
+
+  export interface Chapter{
+    createdAt: string;
+    id: string;
+    name: string;
+    path: string;
+    view: string;
+  };

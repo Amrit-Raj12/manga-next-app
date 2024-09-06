@@ -2,8 +2,14 @@ import React from 'react'
 import Banner from './Banner'
 import CarauselComponent from './Carausel'
 import ListComponent from './ListComponent'
+import { LatestMangaType } from '@/types/types'
 
-const Hero: React.FC = () => {
+type CarauselProps = {
+    carauselMangas: LatestMangaType[]
+    isLoading: boolean
+}
+
+const Hero: React.FC<CarauselProps> = ({carauselMangas}) => {
 
     return (<div className='conatainer mx-auto p-4 w-full'>
                 <div className='grid grid-cols-1 md:grid-cols-12 gap-4'>
@@ -17,7 +23,7 @@ const Hero: React.FC = () => {
                         <div className="relative">
                             <div className="absolute -inset-0.5 bg-gradient-to-l from-[#261B1C] to-[#9a9a9a]  rounded-lg mx-4 px-4 blur-md opacity-75"></div>
                             <div className='relative bg-black p-4 m-4 rounded-lg shadow-lg leading-tight'>
-                                <CarauselComponent />
+                                <CarauselComponent carouselData={carauselMangas} />
                             </div>
                         </div>
                     </div>

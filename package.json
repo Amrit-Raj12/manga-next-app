@@ -10,9 +10,12 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
+    "@tanstack/react-query": "^5.52.1",
     "axios": "^1.7.3",
+    "framer-motion": "^11.3.30",
     "next": "14.2.5",
     "react": "^18",
+    "react-content-loader": "^7.0.2",
     "react-dom": "^18",
     "react-fast-marquee": "^1.6.5",
     "react-multi-carousel": "^2.8.5",

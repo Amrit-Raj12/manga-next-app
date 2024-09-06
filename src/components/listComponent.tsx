@@ -1,10 +1,20 @@
 import React from 'react'
 import ListCard from './ListCard'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/redux/store'
 
 const List = new Array(10).fill(0)
 
 
 const ListComponent = () => {
+
+    // const { data, error, isLoading } = useQuery({
+    //     queryKey: ["mangaList", 1],
+    //     queryFn: () => getLatestMangaList(1),
+    //   });
+
+    const mangaTop10List = useSelector((state: RootState) => state?.manga?.mangaList);
+
     return (
         <div className='m-4'>
             <div className='flex flex-row gap-2 mb-4'>
@@ -13,9 +23,9 @@ const ListComponent = () => {
                 Trending
             </h2>
             </div>
-            <div className='bg-white dark:bg-darkInput p-4 w-auto border-8 border-black rounded-md h-[calc(67vh-200px)] overflow-y-scroll scrollbar-hidden'>
+            <div className='bg-white dark:bg-darkInput p-4 w-auto border-8 border-black rounded-md h-80  xl:h-[26rem] overflow-y-scroll scrollbar-hidden'>
 
-            {List.map((_, index) => (<ListCard key={index} />)) }
+            {mangaTop10List.map((item, index) => (<ListCard key={index} manga={item} index={index} />)) }
             </div>
         </div>
     )

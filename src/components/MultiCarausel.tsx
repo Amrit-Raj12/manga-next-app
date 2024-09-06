@@ -43,8 +43,8 @@ const MultiCarausel: React.FC<MangaProps> = ({mangaData}) => {
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px ml-2"
       >
-        {mangaData.map((item) => (
-          <MangaCard key={item.id} manga={item} />
+        {mangaData?.length > 0 && mangaData.map((item, index) => (
+          <MangaCard key={index} manga={item} />
         ))}
       </Carousel>
 

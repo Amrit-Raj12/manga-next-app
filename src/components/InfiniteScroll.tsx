@@ -1,11 +1,12 @@
+import { Chapter } from '@/types/types';
 import { useState, useEffect, useRef, useCallback } from 'react';
 
 type InfiniteScrollListProps = {
-  fetchData: (page: number) => Promise<string[]>;
+  fetchData: (page: number) => Promise<Chapter[]>;
 };
 
 const InfiniteScrollList: React.FC<InfiniteScrollListProps> = ({ fetchData }) => {
-  const [items, setItems] = useState<string[]>([]);
+  const [items, setItems] = useState<Chapter[]>([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const observer = useRef<IntersectionObserver | null>(null);
@@ -47,15 +48,26 @@ const InfiniteScrollList: React.FC<InfiniteScrollListProps> = ({ fetchData }) =>
             ref={index === items.length - 1 ? lastItemRef : null}
             className="flex justify-between items-center p-4 bg-white dark:bg-[#1A1A1A] shadow rounded text-lightText dark:text-darkText"
           >
-            <p>{item}</p>
-            <div className='flex flex-row gap-2 bg-[#5F5F5F] rounded p-2 text-nowrap text-lightText dark:text-darkText cursor-pointer hover:bg-primary'>
-            <svg width="24px" height="24px" className='fill-darkText' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth={0} /><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" /><g id="SVGRepo_iconCarrier"> <path fillRule="evenodd" clipRule="evenodd" d="M7 14C8.10457 14 9 13.1046 9 12C9 10.8954 8.10457 10 7 10C5.89543 10 5 10.8954 5 12C5 13.1046 5.89543 14 7 14ZM10.4649 10C9.77325 8.8044 8.48056 8 7 8C5.13616 8 3.57006 9.27477 3.12602 11H2C1.44772 11 1 11.4477 1 12C1 12.5523 1.44772 13 2 13H3.12602C3.57006 14.7252 5.13616 16 7 16C9.20914 16 11 14.2091 11 12H13C13 14.2091 14.7909 16 17 16C18.8638 16 20.4299 14.7252 20.874 13H22C22.5523 13 23 12.5523 23 12C23 11.4477 22.5523 11 22 11H20.874C20.4299 9.27477 18.8638 8 17 8C15.5194 8 14.2267 8.8044 13.5351 10H10.4649ZM15 12C15 13.1046 15.8954 14 17 14C18.1046 14 19 13.1046 19 12C19 10.8954 18.1046 10 17 10C15.8954 10 15 10.8954 15 12Z" /> </g></svg>
-
-            <p>Read</p>
-        </div>
+            <div>
+              <p className="text-lg font-bold">{item.name}</p>
+              <p className="text-sm text-gray-500">Views: {item.view}</p>
+              <p className="text-sm text-gray-400">Published: {item.createdAt}</p>
+            </div>
+            <a 
+              href={item.path} 
+              className="flex flex-row gap-2 bg-[#5F5F5F] rounded p-2 text-lightText dark:text-darkText cursor-pointer hover:bg-primary"
+            >
+              <svg width="24px" height="24px" className='fill-darkText' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" strokeWidth={0} />
+                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
+                <g id="SVGRepo_iconCarrier">
+                  <path fillRule="evenodd" clipRule="evenodd" d="M7 14C8.10457 14 9 13.1046 9 12C9 10.8954 8.10457 10 7 10C5.89543 10 5 10.8954 5 12C5 13.1046 5.89543 14 7 14ZM10.4649 10C9.77325 8.8044 8.48056 8 7 8C5.13616 8 3.57006 9.27477 3.12602 11H2C1.44772 11 1 11.4477 1 12C1 12.5523 1.44772 13 2 13H3.12602C3.57006 14.7252 5.13616 16 7 16C9.20914 16 11 14.2091 11 12H13C13 14.2091 14.7909 16 17 16C18.8638 16 20.4299 14.7252 20.874 13H22C22.5523 13 23 12.5523 23 12C23 11.4477 22.5523 11 22 11H20.874C20.4299 9.27477 18.8638 8 17 8C15.5194 8 14.2267 8.8044 13.5351 10H10.4649ZM15 12C15 13.1046 15.8954 14 17 14C18.1046 14 19 13.1046 19 12C19 10.8954 18.1046 10 17 10C15.8954 10 15 10.8954 15 12Z" />
+                </g>
+              </svg>
+              <p>Read</p>
+            </a>
           </li>
         ))}
-        
       </ul>
       {loading && <p className="text-center mt-4 text-lightText dark:text-darkText">Loading...</p>}
     </div>

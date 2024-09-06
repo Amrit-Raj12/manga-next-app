@@ -1,13 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import InfiniteScrollList from './InfiniteScroll';
+import { Chapter } from '@/types/types';
 
-const ChapterList = () => {
-
-    const fetchItems = async (page: number): Promise<string[]> => {
-        // Simulate fetching data (e.g., from an API)
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        return Array.from({ length: 10 }, (_, index) => `Item ${index + 1 + (page - 1) * 10}`);
+interface ChapterListProps {
+    mangaData: {
+        chapterList: Chapter[];
     };
+}
+
+const ChapterList: React.FC<ChapterListProps> = ({mangaData}) => {
+    const [allChapters] = useState(mangaData.chapterList);
+
+     // Function to fetch data for a specific page
+  const fetchData = async (page: number) => {
+    // Simulate fetching new data for each page
+    const itemsPerPage = 2;
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    
+    // Mocking a delay like a real API call
+    return new Promise<Chapter[]>((resolve) => {
+      setTimeout(() => {
+        resolve(allChapters.slice(start, end));
+      }, 1000);
+    });
+  };
+
+    // console.log("fetchItems", fetchItems())
 
     return (
         <div className='overflow-hidden'>
@@ -54,7 +73,7 @@ const ChapterList = () => {
                 </div>
             </div>
             <div className=' h-96 overflow-y-auto scrollbar-hidden'>
-                <InfiniteScrollList fetchData={fetchItems} />
+                <InfiniteScrollList fetchData={fetchData} />
             </div>
         </div>
     )

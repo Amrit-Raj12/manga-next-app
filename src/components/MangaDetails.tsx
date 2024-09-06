@@ -1,11 +1,16 @@
+import { MangaDetailProps } from '@/types/types'
 import React from 'react'
 
-const MangaDetails = () => {
+interface DetailsProps {
+    mangaData: MangaDetailProps
+}
+
+const MangaDetails: React.FC<DetailsProps> = ({mangaData}) => {
     return (
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
             <div className="relative">
-                <div className="absolute -inset-2 bg-gradient-to-tl from-[#261B1C] to-[#D69738]  rounded-lg mx-4 px-4 blur-md opacity-75"></div>
-                <div className="min-h-[556px] rounded-lg relative" style={{ backgroundImage: `url(https://img.freepik.com/free-photo/fantasy-anime-style-scene_23-2151135079.jpg?size=626&ext=jpg&ga=GA1.1.190859207.1723198160&semt=ais_hybrid)` }}></div>
+                {/* <div className="absolute inset-0.5 bg-gradient-to-tl from-[#261B1C] to-[#D69738]  rounded-lg mx-4 px-4 blur-md opacity-75"></div> */}
+                <div className="min-h-[556px] rounded-lg relative bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${mangaData?.imageUrl})` }}></div>
             </div>
 
             <div className="min-h-32 rounded-lg lg:col-span-2">
@@ -15,34 +20,27 @@ const MangaDetails = () => {
                             <strong
                                 className="rounded border border-primary bg-primary px-3 py-1.5 text-[10px] font-medium text-white"
                             >
-                                Episode #101
+                                {mangaData?.status}
                             </strong>
+                            <p className="mt-4 text-xs font-medium text-gray-500">
+                                    Updated At: <a href="#" className="underline hover:text-gray-700">{mangaData.updated}</a>
+                                    
+                                </p>
 
                             <h3 className="mt-4 text-lg font-medium sm:text-xl text-lightText dark:text-darkText">
-                                <a href="#" className="hover:underline"> Some Interesting Podcast Title </a>
+                                <p className=""> {mangaData.name} </p>
                             </h3>
 
                             <div className='my-2 flex flex-wrap gap-2'>
-                                <span
+                                {mangaData?.genres.map((genre, idx) => (
+                                    <span
+                                        key={idx}
                                     className="whitespace-nowrap rounded-full border border-primary px-2.5 py-0.5 text-sm text-primary"
                                 >
-                                    Action
+                                    {genre}
                                 </span>
-                                <span
-                                    className="whitespace-nowrap rounded-full border border-primary px-2.5 py-0.5 text-sm text-primary"
-                                >
-                                    Adventure
-                                </span>
-                                <span
-                                    className="whitespace-nowrap rounded-full border border-primary px-2.5 py-0.5 text-sm text-primary"
-                                >
-                                    Drama
-                                </span>
-                                <span
-                                    className="whitespace-nowrap rounded-full border border-primary px-2.5 py-0.5 text-sm text-primary"
-                                >
-                                    Fantasy
-                                </span>
+                                ))}
+                                
                             </div>
 
 
@@ -77,15 +75,14 @@ const MangaDetails = () => {
                                         ></path>
                                     </svg>
 
-                                    <p className="text-xs font-medium">48:32 minutes</p>
+                                    <p className="text-xs font-medium">{mangaData?.view} Views</p>
                                 </div>
 
                                 <span className="hidden sm:block" aria-hidden="true">&middot;</span>
 
                                 <p className="mt-2 text-xs font-medium text-gray-500 sm:mt-0">
-                                    Featuring <a href="#" className="underline hover:text-gray-700">Barry</a>,
-                                    <a href="#" className="underline hover:text-gray-700">Sandra</a> and
-                                    <a href="#" className="underline hover:text-gray-700">August</a>
+                                    Author <a href="#" className="underline hover:text-gray-700">{mangaData.author}</a>
+                                    
                                 </p>
                             </div>
                             <div className=' border-l-2 border-primary p-4 m-4 rounded-lg text-lightText dark:text-darkText'>
@@ -98,14 +95,14 @@ const MangaDetails = () => {
                                     <p className='text-sm'>What do you think?</p>
                                     <div className='flex flex-row gap-2 my-2 group'>
                                         <div className="w-20 h-20 bg-gray-300 rounded-md flex flex-col justify-center items-center cursor-pointer">
-                                            <p className='text-xl'>
+                                            
                                                 <picture>
                                                     <p className='group-hover:hidden'>😩</p>
                                                     <source srcSet="https://fonts.gstatic.com/s/e/notoemoji/latest/1f629/512.webp" type="image/webp" />
                                                     <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f629/512.gif" className='hidden group-hover:block' alt="😩" width={32} height={32} />
                                                 </picture>
 
-                                            </p>
+                                        
                                             <p className='text-lightText'>Boring</p>
                                         </div>
                                         <div className="w-20 h-20 bg-gray-300 rounded-md flex flex-col justify-center items-center cursor-pointer group">
