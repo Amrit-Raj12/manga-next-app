@@ -51,3 +51,38 @@ export interface HeaderProps {
     path: string;
     view: string;
   };
+
+
+ export interface MangaDetails {
+    description: string;
+    writtenBy: string;
+    publishedBy: string;
+    genre: string;
+  }
+  
+  export interface WikipediaResponse {
+    query: {
+      pages: {
+        [key: string]: {
+          extract: string;
+          pageid: number;
+          title: string;
+        };
+      };
+    };
+  }
+
+export interface ChapterType {
+    id: string,
+    title: string,
+    chapterNumber: number,
+    url: string,
+}
+export interface ChapterPropsType {
+  isLoading?: Boolean,
+  chapterData: {
+    results: {
+      images: string[]
+    }
+  }
+}

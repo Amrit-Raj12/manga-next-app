@@ -1,11 +1,24 @@
+
 import { MangaDetailProps } from '@/types/types'
+import { useRouter } from 'next/router'
 import React from 'react'
 
 interface DetailsProps {
     mangaData: MangaDetailProps
+    mangaDetailsData: any
 }
 
-const MangaDetails: React.FC<DetailsProps> = ({mangaData}) => {
+const MangaDetails: React.FC<DetailsProps> = ({mangaData, mangaDetailsData}) => {
+
+    const router = useRouter()
+
+    const { id } = router.query
+
+    const navigateToRead = (title: string) => {
+        router.push(`/read/${title}/${id}/chapter-1`)
+    }
+   
+
     return (
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
             <div className="relative">
@@ -46,13 +59,11 @@ const MangaDetails: React.FC<DetailsProps> = ({mangaData}) => {
 
 
                             <p className="mt-1 text-sm text-gray-700 dark:text-gray-400">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam nulla amet voluptatum sit
-                                rerum, atque, quo culpa ut necessitatibus eius suscipit eum accusamus, aperiam voluptas
-                                exercitationem facere aliquid fuga. Sint.
+                                 {mangaDetailsData.loading ? "..." : mangaDetailsData.mangaDetails?.description}
                             </p>
 
                             <div className='flex flex-row gap-2 items-center justify-start mt-2'>
-                                <button className='rounded-lg bg-primary px-2.5 py-1 text-xl text-lightText dark:text-purple-100'>Read Now</button>
+                                <button onClick={() =>navigateToRead(mangaData.name)} className='rounded-lg bg-primary px-2.5 py-1 text-xl text-lightText dark:text-purple-100'>Read Now</button>
                                 <button className='rounded-lg bg-gray-500 px-2.5 py-1 text-xl text-primary dark:text-purple-100'>
                                     <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth={0} /><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" /><g id="SVGRepo_iconCarrier"> <path fillRule="evenodd" clipRule="evenodd" d="M6.75 6L7.5 5.25H16.5L17.25 6V19.3162L12 16.2051L6.75 19.3162V6ZM8.25 6.75V16.6838L12 14.4615L15.75 16.6838V6.75H8.25Z" fill="#080341" /> </g></svg>
                                 </button>

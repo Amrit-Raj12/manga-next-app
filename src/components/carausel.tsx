@@ -25,7 +25,7 @@ const CarauselComponent: React.FC<CarauselProps> = ({ carouselData }) => {
     // console.log('carouselData', carouselData)
 
     const handlePush = (mangaTitle: string, mangaId: string) => {
-        route.push(`/${mangaTitle}/${mangaId}`)
+        route.push(`/read/${mangaTitle}/${mangaId}/chapter-1`)
     }
 
     const container = {

@@ -6,7 +6,7 @@ interface SidebarProps {
   closeSidebar: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, closeSidebar }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isOpen=true, closeSidebar }) => {
   return (
     <div
       className={`fixed top-0 left-0 h-full w-64 bg-gray-100 dark:bg-darkBg shadow-lg transform ${

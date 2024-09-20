@@ -6,6 +6,7 @@ import { HeaderProps } from '@/types/types';
 import MobileHeader from './MobileHeader';
 import Link from 'next/link';
 import ThemeSwitch from './ThemeSwitch';
+import { useRouter } from 'next/router';
 
 
 
@@ -13,6 +14,12 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
   const { theme, toggleTheme } = useTheme();
   const [show, setShow] = useState<Boolean | null>(null);
 
+  const router = useRouter();
+
+  //get current route
+  const currentRoute = router.pathname;
+
+  if(currentRoute.includes('/read')) return null;
 
   return (
     <header className={`bg-secondary dark:bg-darkBg flex`}>

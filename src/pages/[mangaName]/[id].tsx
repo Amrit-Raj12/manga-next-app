@@ -1,5 +1,6 @@
 import ChapterList from '@/components/ChapterList';
 import MangaDetails from '@/components/MangaDetails';
+import useMangaDetails from '@/hooks/useWikiMangaDetails';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -18,6 +19,12 @@ const MangaPage: React.FC<MangaPageProps> = ({ mangaData }) => {
 
   console.log("mangaData",mangaData);
 
+  const { mangaDetails, loading, error } = useMangaDetails(mangaData?.name);
+
+  const mangaDetailsData = {
+    mangaDetails, loading, error
+  }
+
   const characterArray = new Array(7).fill(0).map((_, index) => (
     <div key={index} className='flex flex-row gap-2 items-center mt-2'>
       <img
@@ -34,14 +41,14 @@ const MangaPage: React.FC<MangaPageProps> = ({ mangaData }) => {
 
   return (
     <div className='mx-auto max-w-7xl my-10 px-4 bg-white dark:bg-darkBg'>
-      <MangaDetails mangaData={mangaData} />
+      <MangaDetails mangaData={mangaData} mangaDetailsData={mangaDetailsData} />
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
         <div className="rounded-lg bg-white dark:bg-darkBg lg:col-span-2 m-2 p-2">
           <ChapterList mangaData={mangaData} />
         </div>
-        <div className="rounded-lg bg-white dark:bg-darkBg">
-          <h3 className='text-lightText dark:text-darkText font-bold text-xl'>Characters</h3>
-          {characterArray}
+        <div className="rounded-lg bg-white dark:bg-darkBg hidden">
+          <h3 className='text-lightText dark:text-darkText font-bold text-xl'>Genre</h3>
+          {/* {characterArray} */}
           <button
             className="mt-2 inline-block rounded bg-primary px-8 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:opacity-75 w-full"
           >

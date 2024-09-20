@@ -8,31 +8,59 @@ interface ChapterListProps {
     };
 }
 
-const ChapterList: React.FC<ChapterListProps> = ({mangaData}) => {
+const ChapterList: React.FC<ChapterListProps> = ({ mangaData }) => {
     const [allChapters] = useState(mangaData.chapterList);
+    const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
 
-     // Function to fetch data for a specific page
-  const fetchData = async (page: number) => {
-    // Simulate fetching new data for each page
-    const itemsPerPage = 2;
-    const start = (page - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-    
-    // Mocking a delay like a real API call
-    return new Promise<Chapter[]>((resolve) => {
-      setTimeout(() => {
-        resolve(allChapters.slice(start, end));
-      }, 1000);
-    });
-  };
+    const sortedChapters = allChapters
+        .filter(itme => itme.id !== "chapter-0") // Exclude "chapter-0"
+        .sort((a, b) => {
+            const chapterNumA = parseInt(a.id.split('-')[1], 10);
+            const chapterNumB = parseInt(b.id.split('-')[1], 10);
+            return chapterNumA - chapterNumB;
+        });
 
-    // console.log("fetchItems", fetchItems())
+
+    // Function to fetch data for a specific page
+    const fetchData = async (page: number) => {
+        // Simulate fetching new data for each page
+        const itemsPerPage = 5;
+        const start = (page - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+
+        // Mocking a delay like a real API call
+        return new Promise<Chapter[]>((resolve) => {
+            setTimeout(() => {
+                resolve(sortedChapters.slice(start, end));
+            }, 1000);
+        });
+    };
+
+    const sortFilter = (
+        <>
+            {/* Sorting Filter */}
+            <div className="flex justify-end mb-4">
+                <label htmlFor="sortOrder" className="mr-2 text-lightText dark:text-darkText">
+                    Sort by:
+                </label>
+                <select
+                    id="sortOrder"
+                    className="p-2 bg-white dark:bg-[#1A1A1A] border rounded text-lightText dark:text-darkText"
+                    value={sortOrder}
+                    onChange={(e) => setSortOrder(e.target.value as 'asc' | 'desc')}
+                >
+                    <option value="asc">ASC</option>
+                    <option value="desc">DSC</option>
+                </select>
+            </div>
+        </>
+    )
 
     return (
         <div className='overflow-hidden'>
             <div className="bg-gray-400 dark:bg-[#1A1A1A] p-2 mb-2 flex items-center justify-between">
                 <div>
-                    <select
+                    {/* <select
                         name="HeadlineAct"
                         id="HeadlineAct"
                         className="mt-1.5 text-nowrap rounded-lg border-primary bg-gray-400 dark:bg-[#1A1A1A] text-white sm:text-sm outline-none"
@@ -45,7 +73,8 @@ const ChapterList: React.FC<ChapterListProps> = ({mangaData}) => {
                         <option value="AK">Albert King</option>
                         <option value="BG">Buddy Guy</option>
                         <option value="EC">Eric Clapton</option>
-                    </select>
+                    </select> */}
+                    {/* {sortFilter} */}
                 </div>
                 <div>
                     <div className="relative">
@@ -73,7 +102,7 @@ const ChapterList: React.FC<ChapterListProps> = ({mangaData}) => {
                 </div>
             </div>
             <div className=' h-96 overflow-y-auto scrollbar-hidden'>
-                <InfiniteScrollList fetchData={fetchData} />
+                <InfiniteScrollList fetchData={fetchData} sortOrder={sortOrder} />
             </div>
         </div>
     )
