@@ -13,3 +13,10 @@ export const getMangaDetails = async (id: string) => {
   const response = await api.get(`/manga/${id}`);
   return response.data;
 };
+
+export const searchManga = async (query: string, page: number = 1) => {
+  const response = await api.get(`/search`, {
+    params: { query, page },
+  });
+  return response.data; // Adjust based on the actual API response structure
+};

@@ -1,4 +1,5 @@
 import { Chapter } from '@/types/types';
+import Link from 'next/link';
 import { useState, useEffect, useRef, useCallback } from 'react';
 
 type InfiniteScrollListProps = {
@@ -59,6 +60,8 @@ const InfiniteScrollList: React.FC<InfiniteScrollListProps> = ({ fetchData, sort
     }
   });
 
+  console.log("sortedItems", sortedItems)
+
   return (
     <div className="w-full">
       
@@ -76,8 +79,8 @@ const InfiniteScrollList: React.FC<InfiniteScrollListProps> = ({ fetchData, sort
               <p className="text-sm text-gray-500">Views: {item.view}</p>
               <p className="text-sm text-gray-400">Published: {item.createdAt}</p>
             </div>
-            <a
-              href={item.path}
+            <Link
+              href={`/read/${item.name}/${item.path.split('/').slice(2).join('/')}`}
               className="flex flex-row gap-2 bg-[#5F5F5F] rounded p-2 text-lightText dark:text-darkText cursor-pointer hover:bg-primary"
             >
               <svg width="24px" height="24px" className="fill-darkText" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -92,7 +95,7 @@ const InfiniteScrollList: React.FC<InfiniteScrollListProps> = ({ fetchData, sort
                 </g>
               </svg>
               <p>Read</p>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

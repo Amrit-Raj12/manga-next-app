@@ -4,6 +4,7 @@ import Sidebar from "@/components/Sidebar";
 import { store } from "@/redux/store";
 import "@/styles/globals.css";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -22,7 +23,8 @@ export default function App({ Component, pageProps }: AppProps) {
     setIsSidebarOpen(false);
   };
 
-  const [queryClient] = useState(() => new QueryClient());
+  // const [queryClient] = useState(() => new QueryClient());
+  const queryClient = new QueryClient();
 
   useEffect(() => {
     const handleOffline = () => {
@@ -53,6 +55,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Footer />
       </div>
       </Provider>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }
