@@ -49,9 +49,9 @@ const AllListPage = () => {
     };
   }, [searchQuery]);
 
-  if (isReleaseAllLoading) {
-    return <GridLoader />;
-  }
+  // if (isReleaseAllLoading) {
+  //   return <GridLoader />;
+  // }
 
   return (
     <div className='mx-20 my-10 w-full md:mx-0 md:my-0 md:w-auto'>
@@ -76,7 +76,7 @@ const AllListPage = () => {
 
       {/* List */}
       {isSearchLoading ? <><LoadingGif /></> :<div className='mx-auto max-w-screen-xl lg:items-center mt-10'>
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
+        {isReleaseAllLoading ? <GridLoader /> :<div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
           {paginatedResults.map((item:any, index:number) => (
             <NewMangaCard
               key={index}
@@ -87,7 +87,7 @@ const AllListPage = () => {
               posterUrl={item?.img || 'https://m.media-amazon.com/images/I/51fpiDh74UL.jpg'}
             />
           ))}
-        </div>
+        </div>}
 
         {/* Pagination controls */}
         <div className="flex justify-center mt-8">

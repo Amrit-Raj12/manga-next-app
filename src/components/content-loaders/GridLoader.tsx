@@ -5,7 +5,7 @@ import LoadingGif from "./Loading";
 const GridLoader = () => (
 
     <div className="mx-auto max-w-screen-xl lg:items-center mt-10">
-    <div className="md:flex justify-center mt-12 hidden">
+    <div className="hiiden justify-center mt-12 hidden">
     <ContentLoader 
     speed={2}
     width={340}
