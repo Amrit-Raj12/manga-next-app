@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import InfiniteScrollList from './InfiniteScroll';
 import { Chapter } from '@/types/types';
+import { searchChapter } from '@/utils/searchChapter';
 
 interface ChapterListProps {
     mangaData: {
@@ -11,6 +12,8 @@ interface ChapterListProps {
 const ChapterList: React.FC<ChapterListProps> = ({ mangaData }) => {
     const [allChapters] = useState(mangaData.chapterList);
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
+    const [chapterSearch, setChapterSearch] = useState('');
+    const [items, setItems] = useState<Chapter[]>([]);
 
     const sortedChapters = allChapters
         .filter(itme => itme.id !== "chapter-0") // Exclude "chapter-0"
@@ -36,6 +39,8 @@ const ChapterList: React.FC<ChapterListProps> = ({ mangaData }) => {
         });
     };
 
+    
+
     const sortFilter = (
         <>
             {/* Sorting Filter */}
@@ -55,6 +60,11 @@ const ChapterList: React.FC<ChapterListProps> = ({ mangaData }) => {
             </div>
         </>
     )
+
+    const handleChapterSearch = () => {
+      const searchResults =  searchChapter(items, chapterSearch);
+      setItems(searchResults);
+    }
 
     return (
         <div className='overflow-hidden'>
@@ -81,6 +91,7 @@ const ChapterList: React.FC<ChapterListProps> = ({ mangaData }) => {
                         <input
                             type="text"
                             id="Search"
+                            onChange={(e) => setChapterSearch(e.target.value)}
                             placeholder="chapter name/chapter number"
                             className={`w-[420px] rounded-md border-gray-200 p-2.5 pe-10 shadow-sm sm:text-sm dark:border-darkBg dark:bg-darkInput dark:text-white`}
                         />
@@ -88,6 +99,7 @@ const ChapterList: React.FC<ChapterListProps> = ({ mangaData }) => {
                         <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
                             <button
                                 type="button"
+                                onClick={handleChapterSearch}
                                 className="text-gray-600 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
                             >
                                 <span className="sr-only">Search</span>
@@ -102,7 +114,7 @@ const ChapterList: React.FC<ChapterListProps> = ({ mangaData }) => {
                 </div>
             </div>
             <div className=' h-96 overflow-y-auto scrollbar-hidden'>
-                <InfiniteScrollList fetchData={fetchData} sortOrder={sortOrder} />
+                <InfiniteScrollList fetchData={fetchData} sortOrder={sortOrder} items={items} setItems={setItems}  />
             </div>
         </div>
     )

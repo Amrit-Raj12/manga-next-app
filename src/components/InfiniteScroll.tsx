@@ -5,10 +5,12 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 type InfiniteScrollListProps = {
   fetchData: (page: number) => Promise<Chapter[]>;
   sortOrder: string;
+  items: Chapter[];
+  setItems: React.Dispatch<React.SetStateAction<Chapter[]>>;
 };
 
-const InfiniteScrollList: React.FC<InfiniteScrollListProps> = ({ fetchData, sortOrder }) => {
-  const [items, setItems] = useState<Chapter[]>([]);
+const InfiniteScrollList: React.FC<InfiniteScrollListProps> = ({ fetchData, sortOrder, items, setItems }) => {
+  // const [items, setItems] = useState<Chapter[]>([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   // const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc'); // Sorting order state
