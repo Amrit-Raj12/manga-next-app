@@ -62,8 +62,6 @@ const InfiniteScrollList: React.FC<InfiniteScrollListProps> = ({ fetchData, sort
     }
   });
 
-  console.log("sortedItems", sortedItems)
-
   return (
     <div className="w-full">
       

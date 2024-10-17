@@ -29,7 +29,7 @@ const AllListPage = () => {
   // Combine results based on search state
   const results = debouncedQuery ? searchResults?.results || [] : releaseListAll?.results || [];
 
-  console.log("results", results)
+  // console.log("results", results)
 
   // Pagination logic
   const paginatedResults = results.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
