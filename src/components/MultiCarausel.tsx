@@ -29,7 +29,7 @@ const MultiCarausel: React.FC<MangaProps> = ({mangaData}) => {
 
       return (
       <Carousel
-        swipeable={false}
+        swipeable={true}
         draggable={true}
         showDots={true}
         responsive={responsive}
