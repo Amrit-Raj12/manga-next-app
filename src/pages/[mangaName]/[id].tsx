@@ -12,14 +12,13 @@ interface MangaPageProps {
 const MangaPage: React.FC<MangaPageProps> = ({ mangaData }) => {
   const router = useRouter();
 
+  const { mangaDetails, loading, error } = useMangaDetails(mangaData?.name);
+  
   // Fallback loading state for SSR
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
 
-  console.log("mangaData",mangaData);
-
-  const { mangaDetails, loading, error } = useMangaDetails(mangaData?.name);
 
   const mangaDetailsData = {
     mangaDetails, loading, error
