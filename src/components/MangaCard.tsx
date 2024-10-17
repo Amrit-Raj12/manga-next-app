@@ -27,7 +27,7 @@ const MangaCard: React.FC<MangaCardProps> = ({manga}) => {
                 }}>
                     {/* <p className="bg-primary text-secondary text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-secondary dark:text-primary w-16 text-center">{manga.year}</p> */}
 
-                    <p className="text-xl font-bold text-primary">{shortTitle(manga.title)}</p>
+                    <p className="text-xl font-bold text-white">{shortTitle(manga.title)}</p>
 
                     <div className="">
                         <div

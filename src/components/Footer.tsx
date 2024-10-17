@@ -172,7 +172,7 @@ const Footer = () => {
         </div> */}
 
         <div>
-          <p className="font-medium text-gray-900 dark:text-white">Company</p>
+          <p className="font-medium text-gray-900 dark:text-white">Links</p>
 
           <ul className="mt-6 space-y-4 text-sm">
             <li>
@@ -181,7 +181,7 @@ const Footer = () => {
               </a>
             </li>
 
-            <li>
+            {/* <li>
               <a href="#" className="text-gray-700 transition hover:opacity-75 hover:text-primary hover:dark:text-primary dark:text-gray-200">
                 Meet the Team
               </a>
@@ -191,7 +191,7 @@ const Footer = () => {
               <a href="#" className="text-gray-700 transition hover:opacity-75 hover:text-primary hover:dark:text-primary dark:text-gray-200">
                 Accounts Review
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

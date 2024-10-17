@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const Banner = () => {
@@ -19,9 +20,9 @@ const Banner = () => {
                     <button className='bg-black rounded-md px-3 sm:px-4 py-2 mt-2 text-white'>
                         Read Now
                     </button>
-                    <p className='text-black underline ml-2 cursor-pointer hover:text-secondary'>
+                    <Link href='/all-list' className='text-black underline ml-2 cursor-pointer hover:text-secondary'>
                         Explore More
-                    </p>
+                    </Link>
                 </div>
             </div>
             <div className='flex justify-center sm:justify-end relative'>

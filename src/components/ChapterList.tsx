@@ -113,7 +113,7 @@ const ChapterList: React.FC<ChapterListProps> = ({ mangaData }) => {
                     </div>
                 </div>
             </div>
-            <div className=' h-96 overflow-y-auto scrollbar-hidden'>
+            <div className=' h-96 overflow-y-hidden scrollbar-hidden'>
                 <InfiniteScrollList fetchData={fetchData} sortOrder={sortOrder} items={items} setItems={setItems}  />
             </div>
         </div>
