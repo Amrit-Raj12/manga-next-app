@@ -51,9 +51,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <Header toggleSidebar={toggleSidebar} />
         <Sidebar isOpen={isSidebarOpen} closeSidebar={closeSidebar} />
         <main className="flex-1 p-4">
-        <SiteIsDown />;
+        {/* <SiteIsDown />; */}
           {/* Down For Maintenance */}
-          {/* <Component {...pageProps} /> */}
+          <Component {...pageProps} />
         </main>
         <Footer />
       </div>

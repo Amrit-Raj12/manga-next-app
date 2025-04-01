@@ -1,9 +1,16 @@
 import axios from 'axios';
+import { setupCache } from "axios-cache-interceptor";
 
-const api = axios.create({
-  baseURL: 'https://manga-api-v1.vercel.app',
-  timeout: 5000,
-});
+// const api = axios.create({
+//   baseURL: 'https://manga-new-server.vercel.app',
+//   timeout: 5000,
+// });
+
+const api = setupCache(
+  axios.create({
+    baseURL: "https://manga-new-server.vercel.app", // Replace with your API URL
+  })
+);
 
 // Add request and response interceptors
 api.interceptors.request.use((config) => {
